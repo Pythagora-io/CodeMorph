@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/_head.ejs') %>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-okaidia.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-javascript.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.18/dist/index.min.js"></script>
+  <body>
+    <%- include('partials/_header.ejs') %>
+    <main role="main" class="container mt-4">
+      <div>
+        <h1 class="text-center">Pythagora CodeMorph</h1>
+        <form id="fetch-form" class="mt-4 text-center">
+          <div class="mb-3">
+            <input type="text" class="form-control" id="repo-url" placeholder="Enter GitHub repository URL" required>
+            <button type="submit" class="btn btn-primary">Fetch</button>
+          </div>
+        </form>
+        <form id="morph-form" class="mt-4 text-center">
+          <div class="row">
+            <div class="col-md-5">
+              <select class="form-select" id="source-language" disabled>
+                <option value="">Select source language/framework</option>
+              </select>
+            </div>
+            <div class="col-md-5">
+              <select class="form-select" id="target-language" disabled>
+                <option value="">Select target language/framework</option>
+              </select>
+            </div>
+            <div class="col-md-2">
+              <button type="submit" class="btn btn-primary" id="morph-button" disabled>Morph</button>
+            </div>
+          </div>
+        </form>
+        <div id="message" class="mt-3 text-center"></div>
+        <div id="download-container" class="mt-3 text-center" style="display: none;">
+          <button id="download-button" onclick="downloadMorphedRepo()" class="btn btn-success btn-lg">
+            <i class="fas fa-download me-2"></i>Download Morphed Repository
+          </button>
+        </div>
+        <div id="progress-container" class="mt-3" style="display: none;">
+          <div class="progress">
+            <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-md-4">
+            <h2>File Structure</h2>
+            <div id="repoTree"></div>
+          </div>
+          <div class="col-md-8">
+            <h2>File Content</h2>
+            <div id="file-content" class="border p-3 bg-light">
+              <p class="text-muted">Select a file to view its content</p>
+            </div>
+          </div>
+        </div>
+        <canvas id="confetti-canvas"></canvas>
+      </div>
+    </main>
+    <%- include('partials/_footer.ejs') %>
+    <script src="/js/repoTree.js"></script>
+    <script src="/js/main.js"></script>
+    <div id="success-modal" class="modal-overlay" style="display: none;">
+      <div class="modal-content">
+        <p id="success-message"></p>
+      </div>
+    </div>
+    <div id="error-container" style="display: none;"></div>
+
+    <script src="/js/errorHandler.js"></script>
+  </body>
+</html>
