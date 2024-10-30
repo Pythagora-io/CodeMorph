@@ -1,4 +1,3 @@
-```markdown
 # Pythagora CodeMorph
 
 Pythagora CodeMorph is an innovative web application designed to transform the codebase of a GitHub repository from one programming language to another using OpenAI's Large Language Models (LLMs). The application offers a user-friendly interface, making it accessible even to users without a technical background. It allows users to fetch a public GitHub repository, display its files in a hierarchical structure, identify the programming languages and frameworks used, suggest possible target languages and frameworks for transformation, morph the repository into a different programming language and framework, and export the transformed files in a zip format.
@@ -72,9 +71,6 @@ To run Pythagora CodeMorph, you need the following technologies installed on you
 
 ### License
 
-The project is proprietary (not open source). 
+The project is open source, licensed under the MIT License. See the [LICENSE](LICENSE).
 
-```
-© 2024. All rights reserved.
-```
-```
+Copyright © 2024 Pythagora-io. 
