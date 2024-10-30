@@ -9,6 +9,7 @@ const profileRoutes = require('./routes/profileRoutes');
 const repoRoutes = require('./routes/repoRoutes');
 const morphRoutes = require('./routes/morphRoutes');
 const fileRoutes = require('./routes/fileRoutes'); // Added new route import
+const { isAuthenticated } = require('./routes/middleware/authMiddleware');
 
 if (!process.env.DATABASE_URL || !process.env.SESSION_SECRET) {
   console.error("Error: config environment variables not set. Please create/edit .env configuration file.");
@@ -88,7 +89,7 @@ app.use('/', morphRoutes);
 app.use('/', fileRoutes); // Added new route usage
 
 // Root path response
-app.get("/", (req, res) => {
+app.get("/", isAuthenticated, (req, res) => {
   res.render("index");
 });
 
